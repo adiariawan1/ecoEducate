@@ -1,8 +1,14 @@
+// src/components/layouts/defaultLayouts.jsx
 import React from 'react'
+// Jangan import Navbar di sini
 
-const DefaultLayouts = ({children}) => {
+const DefaultLayouts = ({ children }) => {
   return (
-    <div>{children}</div>
+    <div  >
+      <main>
+        {children} {/* Cuma render isi halaman (Jumbotron/Donate/dll) */}
+      </main>
+    </div>
   )
 }
 
