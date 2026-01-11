@@ -37,7 +37,7 @@ const Navbar = () => {
           </Link>
         </div>
 
-        {/* --- 4. MOBILE HAMBURGER --- */}
+        {/* MOBILE HAMBURGER  */}
         <button 
           className="md:hidden text-white p-2"
           onClick={() => setIsOpen(!isOpen)}
@@ -47,14 +47,14 @@ const Navbar = () => {
       </div>
 
       {/* --- MOBILE MENU DROPDOWN --- */}
-      {/* Logic: Kalau isOpen true, tampilkan div ini */}
+      
       {isOpen && (
         <div className="md:hidden absolute top-full left-0 w-full bg-black/95 backdrop-blur-xl border-t border-white/10 p-6 flex flex-col gap-6 shadow-2xl animate-in slide-in-from-top-5">
           {links.map((link) => (
             <Link 
               key={link.name}
               to={link.path}
-              onClick={() => setIsOpen(false)} // Tutup menu pas diklik
+              onClick={() => setIsOpen(false)} 
               className="text-white font-bold text-lg tracking-widest hover:text-emerald-400"
             >
               {link.name}
