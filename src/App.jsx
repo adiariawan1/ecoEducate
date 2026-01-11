@@ -8,8 +8,8 @@ const App = () => {
   return (
     <DefaultLayouts>
       <Routes>
-          <Route path="/" element={<Jumbotron />} />
-          <Route path="/donate" element={<div className="pt-24 text-center">Halaman Donasi</div>} />
+        <Route path="/" element={<Jumbotron />} />
+        <Route path="/donate" element={<div className="pt-24 text-center">Halaman Donasi</div>} />
       </Routes>
     </DefaultLayouts>
   )
