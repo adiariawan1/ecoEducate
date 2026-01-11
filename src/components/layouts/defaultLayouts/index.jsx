@@ -1,12 +1,13 @@
 // src/components/layouts/defaultLayouts.jsx
 import React from 'react'
-// Jangan import Navbar di sini
+import Navbar from '../../home/navbar'
 
 const DefaultLayouts = ({ children }) => {
   return (
     <div  >
+      <Navbar/>
       <main>
-        {children} {/* Cuma render isi halaman (Jumbotron/Donate/dll) */}
+        {children} 
       </main>
     </div>
   )
