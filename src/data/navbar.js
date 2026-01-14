@@ -1,6 +1,6 @@
 export const links = [
-    { name: 'HOME', path: '/' },
-    { name: 'CAUSES', path: '/causes' },
-    { name: 'ABOUT US', path: '/about' },
-    { name: 'CONTACT', path: '/contact' },
+    { name: 'BERANDA', path: '/' },
+    { name: 'KAMPANYE', path: '/kampanye' },
+    { name: 'TENTANG KAMI', path: '/tentang-kami' },
+    { name: 'KONTAK', path: '/kontak' },
   ];
