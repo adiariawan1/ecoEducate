@@ -18,7 +18,16 @@ const Navbar = () => {
         </Link>
         {/* navlinks */}
       <div className='hidden md:flex items-center gap-8'>
-      {links.map((item, index) => (
+        <EachUtils of={links} render={(item, index) =>(
+          <Link 
+          key={index} 
+          to={item.path} 
+          className='text-xs font-bold text-gray-300 hover:text-white transition tracking-widest'
+        >
+          {item.name}
+        </Link>
+        )}/>
+      {/* {links.map((item, index) => (
         <Link 
           key={index} 
           to={item.path} 
@@ -26,7 +35,8 @@ const Navbar = () => {
         >
           {item.name}
         </Link>
-      ))}
+      ))} */}
+    
     </div>
         {/* button */}
         <div className="hidden md:block">
