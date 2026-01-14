@@ -3,24 +3,24 @@ export const causesData = [
     id: 1,
     iconKey: "book", 
     title: "Pendidikan",
-    description: "Fermentum nisl accumsan nisi sapien in vitae."
+    description: "Bantu anak-anak mendapatkan akses terhadap pendidikan berkualitas."
   },
   {
     id: 2,
     iconKey: "water",
     title: "Air bersih",
-    description: "Ultricies lacus turpis proin tempor faucibus."
+    description: "Bantu masyarakat mendapatkan akses terhadap air bersih yang aman."
   },
   {
     id: 3,
     iconKey: "health",
     title: "Kesehatan",
-    description: "Adipiscing in vitae necposue eget fringilla a morbi."
+    description: "Bantu masyarakat mendapatkan akses terhadap layanan kesehatan yang berkualitas."
   },
   {
     id: 4,
     iconKey: "community",
     title: "komunitas",
-    description: "Nunc tristique quis leo duis gravida volutpat vitae."
+    description: "Berkontribusi untuk kemajuan komunitas."
   }
 ];
