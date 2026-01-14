@@ -14,7 +14,7 @@ const HeaderCauses = () => {
     <section>
         <div className='text-center max-w-3xl mx-auto mb-20'>
         <p className="text-gray-500 text-sm font-medium mb-4 uppercase tracking-wide">
-          Home <span className="mx-2 text-black">/  Causes</span>
+          Beranda <span className="mx-2 text-black">/  Kampanye</span>
         </p>
 
         <h2 className='text-4xl md:text-5xl font-bold text-slate-900 mb-6'>
