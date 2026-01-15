@@ -90,6 +90,7 @@ const LatestCauses = () => {
           </button>
         </div>
     )}
+    
     </section>
   )
 }
