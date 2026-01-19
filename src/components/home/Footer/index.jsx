@@ -1,4 +1,5 @@
 import React from "react";
+import EachUtils from "../../../utils/EachUtils";
 
 const Footer = () => {
   return (
@@ -8,16 +9,16 @@ const Footer = () => {
         <div>
           <h3 className="text-white text-2xl font-bold mb-4">EcoEducate</h3>
           <p className="text-gray-400 mb-6">
-            Tincidunt luctus porta amet lectus at ultricies nec sed non.
+            ayo lindungi bumi ini dan sesama demi keberlanjutan.
           </p>
           <p className="text-sm">
             <span className="text-white">No. WA :</span> (+62) 815-2964-0581
           </p>
           <p className="text-sm">
-            <span className="text-white">Address:</span> Capitol Heights, MD
+            <span className="text-white">Address:</span> JL.Raya Puputan,Dangin Puri Kelod, Denpasar,Bali
           </p>
         </div>
-
+        
         <div>
           <h4 className="text-white font-semibold mb-4">Tentang Kami</h4>
           <ul className="space-y-2">
@@ -28,6 +29,7 @@ const Footer = () => {
             <li>Contact Us</li>
           </ul>
         </div>
+  
 
         <div>
           <h4 className="text-white font-semibold mb-4">Tautan Berguna</h4>
