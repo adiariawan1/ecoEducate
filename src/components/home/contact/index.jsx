@@ -154,10 +154,10 @@ const Contact = () => {
 
       {/* VISUAL SECTION */}
       <div className="max-w-6xl mx-auto py-46 text-center">
-        <img
-          src="/fotosusah.jpg"
-          className="rounded-xl w-[1000px] h-[350px] object-cover mx-auto"
-        />
+       <img
+        src="https://i.pinimg.com/736x/ac/f0/c2/acf0c2ef86ac6ae520b2de9a0613f328.jpg"
+        className="rounded-xl w-[1000px] h-[350px] object-cover mx-auto"
+       />
       </div>
 
       {/* FAQ SECTION */}
