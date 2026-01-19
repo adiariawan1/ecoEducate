@@ -2,7 +2,7 @@ import React from "react";
 
 const About = () => {
   return (
-    <section className="pt-32 pb-16 min-h-screen">
+    <section className="relative pt-32 pb-16 min-h-screen bg-cover bg-center">
       <div className="container mx-auto px-4 lg:px-20">
         {/* Header Halaman */}
         <div className="text-center mb-12">
@@ -31,7 +31,11 @@ const About = () => {
           {/* deskripsi */}
           <div className="w-full md:w-1/2">
             <h2 className="text-2xl font-semibold text-slate-700 mb-4 text-white">
-              Membangun Masa Depan yang Lebih Baik
+              Membangun{" "}
+              <span className="text-orange-500 font-bold text-3xl">
+                Masa Depan
+              </span>{" "}
+              yang Lebih Baik
             </h2>
             <p className="text-slate-600 leading-relaxed mb-6 text-white">
               Kami adalah organisasi nirlaba yang berdedikasi untuk memberikan

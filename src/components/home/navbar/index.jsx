@@ -42,7 +42,7 @@ const Navbar = () => {
         </div>
         {/* button */}
         <div className="hidden md:block">
-          <Link to="/donate">
+          <Link to="/Kampanye">
             <button className="bg-orange-500 hover:bg-orange-600 text-white px-7 py-3 rounded-full font-bold text-xs tracking-widest transition transform hover:scale-105 shadow-xl shadow-orange-500/20">
               DONATE
             </button>
@@ -70,7 +70,13 @@ const Navbar = () => {
               {link.name}
             </Link>
           ))}
-          <Link to="/donate" onClick={() => setIsOpen(false)}>
+          <Link to="/Kampanye" onClick={() => setIsOpen(false)}>
+            <button className="w-full bg-orange-500 text-white py-4 rounded-full font-bold tracking-widest">
+              DONATE NOW
+            </button>
+          </Link>
+          =======
+          <Link to="/Kampanye" onClick={() => setIsOpen(false)}>
             <button className="w-full bg-orange-500 text-white py-4 rounded-full font-bold tracking-widest">
               DONATE NOW
             </button>
