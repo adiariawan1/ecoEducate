@@ -27,17 +27,14 @@ const LatestCauses = () => {
     fetchData();
   }, [currentPage]);
   return (
-    <section className='py-24 bg-gray-50'>
-        <div className="flex flex-col md:flex-row justify-between items-end mb-12 px-2">
-        <div>
-          <h2 className="text-4xl font-bold text-slate-900 mb-2">Kampanye</h2>
-          <p className="text-gray-500 max-w-lg">
+    <section className='pb-24 pt-5 bg-gray-50'>
+      <div className="flex flex-col md:flex-row justify-center items-center mb-15 px-2">
+        <div >
+          <h2 className="text-4xl font-bold text-slate-900 mb-2 text-center">Kampanye</h2>
+          <p className="text-gray-500 max-w-lg text-center">
              Temukan berbagai program kebaikan yang membutuhkan uluran tanganmu hari ini.
           </p>
         </div>
-        <button className="hidden md:flex items-center gap-2 border border-slate-900 px-6 py-3 rounded-full font-bold hover:bg-slate-900 hover:text-white transition">
-          Lihat Semua <ArrowRight size={18} />
-        </button>
       </div>
 
       {loading ? (
@@ -57,7 +54,7 @@ const LatestCauses = () => {
         </div>
       )}
 
-      {totalPages > 1 && (
+      {totalPages > 0 && (
         <div className="flex justify-center items-center gap-2 mt-16">
           <button 
             disabled={currentPage === 1}
