@@ -4,6 +4,7 @@ import Jumbotron from '../../home/jumbotron'
 import ProjectsMap from '../../home/projectRegion'
 import LatestCauses from '../../home/cause/latestCauese'
 import LatestCausehome from '../../home/cause/latestCausehome'
+import OurGalery from '../../home/Galery'
 
 const Beranda = () => {
   return (
@@ -11,6 +12,7 @@ const Beranda = () => {
         <Jumbotron/>
         <LatestCausehome />
         <ProjectsMap/>
+        <OurGalery/>
     </SectionLayout>
   )
 }

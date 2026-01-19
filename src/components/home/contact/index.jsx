@@ -1,11 +1,6 @@
 import React, { useState } from "react";
 import SectionLayout from "../../layouts/sectionLayouts/index";
-import {
-  Phone,
-  Mail,
-  Clock,
-  MapPin,
-} from "lucide-react";
+import { Phone, Mail, Clock, MapPin,} from "lucide-react";
 import Footer from "../../home/Footer/index";
 import { faqs } from "../../../data/faq";
 import EachUtils from "../../../utils/EachUtils";
