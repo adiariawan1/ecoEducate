@@ -44,6 +44,7 @@ const HeaderCauses = () => {
                 </div>
             )}/>
         </div> 
+        
     </section>
   )
 }

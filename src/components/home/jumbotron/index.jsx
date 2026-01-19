@@ -36,9 +36,9 @@ const Jumbotron = () => {
   });
 
   return (
-    <SectionLayout className="pt-24 pb-6 h-screen flex flex-col">
-        
-        <div className="relative w-full h-full bg-gray-900 rounded-3xl overflow-hidden flex items-center shadow-2xl shadow-emerald-900/20">
+    // <SectionLayout className="pt-24 pb-6 h-screen flex flex-col">
+    <section  >
+            <div className="relative w-full h-full bg-gray-900  overflow-hidden flex items-center shadow-2xl shadow-emerald-900/20">
             
 
             {/* Background Image */}
@@ -84,7 +84,7 @@ const Jumbotron = () => {
                     </div>
 
                     
-                    <div className="flex flex-wrap gap-8 opacity-50">
+                    <div className="flex flex-wrap gap-8 opacity-50 mb-15">
                         <EachUtils 
                             of={staticHeroData.logos}
                             render={(item, index) => (
@@ -99,7 +99,10 @@ const Jumbotron = () => {
                 </div>
             </div>
         </div>
-    </SectionLayout>
+    </section>
+        
+
+    // </SectionLayout>
   )
 }
 
