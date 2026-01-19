@@ -1,21 +1,15 @@
-import React, { useState } from "react";
-import SectionLayout from "../../layouts/sectionLayouts/index";
-import {
-  Phone,
-  Mail,
-  Clock,
-  MapPin,
-} from "lucide-react";
-import Footer from "../../home/Footer/index";
-import { faqs } from "../../../data/faq";
-import EachUtils from "../../../utils/EachUtils";
+import React, { useState } from "react"; //Mengimpor React untuk bisa menulis komponen.useState dipakai menyimpan dan mengubah state (data dinamis) di dalam komponen.
+import SectionLayout from "../../layouts/sectionLayouts/index"; //Dipakai untuk membungkus konten agar konsisten styling/layout antar section.
+import { Phone, Mail, Clock, MapPin,} from "lucide-react";//Mengimpor ikon dari library lucide-react.
+import { faqs } from "../../../data/faq";//Mengimpor data FAQ (Frequently Asked Questions) dari file
+import EachUtils from "../../../utils/EachUtils";//mempermudah looping/render array di JSX.
 
 
 const Contact = () => {
   const [openIndex, setOpenIndex] = useState(null);
   const toggleFAQ = (index) => {
     setOpenIndex(openIndex === index ? null : index);
-  };
+  };//dipakai untuk mengatur FAQ (accordion) supaya bisa dibuka/tutup satu per satu.
 
   return (
     <SectionLayout className="mt-30 bg-white p-2">
