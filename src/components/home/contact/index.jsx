@@ -1,21 +1,17 @@
 import React, { useState } from "react";
 import SectionLayout from "../../layouts/sectionLayouts/index";
-import {
-  Phone,
-  Mail,
-  Clock,
-  MapPin,
-} from "lucide-react";
+import { Phone, Mail, Clock, MapPin,} from "lucide-react";
 import Footer from "../../home/Footer/index";
 import { faqs } from "../../../data/faq";
 import EachUtils from "../../../utils/EachUtils";
+
 
 
 const Contact = () => {
   const [openIndex, setOpenIndex] = useState(null);
   const toggleFAQ = (index) => {
     setOpenIndex(openIndex === index ? null : index);
-  };
+  };//dipakai untuk mengatur FAQ (accordion) supaya bisa dibuka/tutup satu per satu.
 
   return (
     <SectionLayout className="mt-30 bg-white p-2">
@@ -154,10 +150,10 @@ const Contact = () => {
 
       {/* VISUAL SECTION */}
       <div className="max-w-6xl mx-auto py-46 text-center">
-        <img
-          src="/fotosusah.jpg"
-          className="rounded-xl w-[1000px] h-[350px] object-cover mx-auto"
-        />
+       <img
+        src="https://i.pinimg.com/736x/ac/f0/c2/acf0c2ef86ac6ae520b2de9a0613f328.jpg"
+        className="rounded-xl w-[1000px] h-[350px] object-cover mx-auto"
+       />
       </div>
 
       {/* FAQ SECTION */}

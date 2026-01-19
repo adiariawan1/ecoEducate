@@ -15,10 +15,10 @@ const App = () => {
         <Route path="/" element={<Beranda />} />
         <Route path="/Kampanye" element={<Cause />} />
         <Route path="/kampanye" element={<Cause />} />
-        <Route path="/kontak" element={< Contact/>} />
+        <Route path="/kontak" element={<Contact />} />
       </Routes>
     </DefaultLayouts>
-  )
-}
+  );
+};
 
-export default App
+export default App;
