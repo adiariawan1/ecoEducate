@@ -1,4 +1,4 @@
-
+// faq
 export const faqs = [
   {
     question: "Organisasi amal apa saja yang bisa saya bantu?",
