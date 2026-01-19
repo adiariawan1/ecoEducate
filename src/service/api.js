@@ -28,6 +28,15 @@ export const api = {
       return { money: 0, people: 0 };
     }
   },
+  createDonation: async (payload) => {
+    const { data, error } = await supabase
+      .from('donations')
+      .insert([payload])
+      .select();
+      
+    if (error) throw error;
+    return data;
+  },
   // fetchCampagins
   getCampaigns: async (page = 1, limit = 9) => {
     try {
@@ -36,17 +45,25 @@ export const api = {
 
       const { data, count, error } = await supabase
       .from('campaign_stats') 
-      .select('*', { count: 'exact' }) 
+      .select('*', { count: 'exact' })
       .range(from, to)
       .order('created_at', { ascending: false });
       if (error) throw error;
       return {
         data : data,
-        totalsitems: count
+        totalItems: count
       }
     } catch (err) {
       console.error("Gagal ambil campaigns:", err);
       return { data: [], totalItems: 0 };
     }
+  },
+  getGallery: async () => {
+    const { data, error } = await supabase
+      .from('gallery')
+      .select('*')
+      .order('created_at', { ascending: false }); 
+    if (error) throw error;
+    return data;
   }
 };
