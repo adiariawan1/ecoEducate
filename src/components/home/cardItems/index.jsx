@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const CardItems = ({ item }) => {
   
@@ -64,10 +65,12 @@ const CardItems = ({ item }) => {
                 </div>
             </div>
 
-
+            <Link to={`/Kampanye/${item.id}`}>
             <button className="mt-auto w-full bg-black text-white py-4 rounded-xl font-bold uppercase text-sm tracking-wider hover:bg-orange-500 transition duration-300">
                 lihat detail
             </button>
+            </Link>
+
 
         </div>
     </div>

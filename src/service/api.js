@@ -58,6 +58,16 @@ export const api = {
       return { data: [], totalItems: 0 };
     }
   },
+  getCampaignById: async (id) => {
+    const { data, error } = await supabase
+      .from('campaign_stats')
+      .select('*')
+      .eq('id', id)  // Cari berdasarkan ID
+      .single();     // Ambil satu data saja
+
+    if (error) throw error;
+    return data;
+  },
   getGallery: async () => {
     const { data, error } = await supabase
       .from('gallery')
@@ -65,5 +75,23 @@ export const api = {
       .order('created_at', { ascending: false }); 
     if (error) throw error;
     return data;
-  }
+  },
+  createDonation: async (payload) => {
+  const { data, error } = await supabase
+    .from('donations')
+    .insert([payload])
+    .select();
+  if (error) throw error;
+  return data;
+},
+  getUrgentCampaigns: async () => {
+  const { data, error } = await supabase
+    .from('campaign_stats')
+    .select('*')
+    .limit(3) 
+    .order('created_at', { ascending: false });
+    
+  if (error) throw error;
+  return data;
+}
 };
