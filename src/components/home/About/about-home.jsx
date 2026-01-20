@@ -1,21 +1,18 @@
 import React from "react";
 
-const About = () => {
+const AboutHome = () => {
   return (
     <section className="relative min-h-screen bg-white flex items-center py-16">
-      
       {/* PERUBAHAN DI SINI:
           1. Ganti 'container' dengan 'max-w-7xl' (biar lebih lebar maksimalnya)
           2. Kurangi 'lg:px-20' menjadi 'px-6 lg:px-8' (biar tidak terlalu menjorok ke dalam) 
       */}
       <div className="w-full max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
-        
         {/* Header Halaman (Kosong sesuai request) */}
         <div className="text-center mb-12"></div>
 
         {/* Grid Layout */}
         <div className="flex flex-col md:flex-row items-center gap-12 lg:gap-20">
-          
           {/* Foto Kiri */}
           <div className="w-full md:w-1/2">
             <div className="relative">
@@ -31,12 +28,10 @@ const About = () => {
           <div className="w-full md:w-1/2">
             <h2 className="text-3xl md:text-4xl font-semibold text-slate-900 mb-6 leading-tight">
               Membangun{" "}
-              <span className="text-orange-500 font-bold">
-                Masa Depan
-              </span>{" "}
-              yang Lebih Baik
+              <span className="text-orange-500 font-bold">Masa Depan</span> yang
+              Lebih Baik
             </h2>
-            
+
             <p className="text-slate-600 text-lg leading-relaxed mb-6">
               Kami adalah organisasi nirlaba yang berdedikasi untuk memberikan
               dampak positif bagi masyarakat. Berawal dari kepedulian kecil,
@@ -78,4 +73,4 @@ const About = () => {
   );
 };
 
-export default About;
+export default AboutHome;
