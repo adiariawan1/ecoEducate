@@ -42,11 +42,11 @@ const Footer = () => {
         <div>
           <h4 className="text-white font-semibold mb-4">Tentang Kami</h4>
           <ul className="space-y-2">
-            <li>About Us</li>
-            <li>Causes</li>
+            <li>Tentang kami</li>
+            <li>Kampanye</li>
             <li>Volunteers</li>
-            <li>Partners</li>
-            <li>Contact Us</li>
+            <li>Mitra</li>
+            <li>Kontak kami</li>
           </ul>
         </div>
 
@@ -54,9 +54,8 @@ const Footer = () => {
           <h4 className="text-white font-semibold mb-4">Tautan Berguna</h4>
           <ul className="space-y-2">
             <li>F.A.Q</li>
-            <li>News</li>
-            <li>Reports</li>
-            <li>Terms of Use</li>
+            <li>Berita</li>
+            <li>Ketentuan Pengguna</li>
             <li>Privacy Policy</li>
           </ul>
         </div>
@@ -85,7 +84,7 @@ const Footer = () => {
       </div>
 
       <p className="text-center text-gray-500 mt-16 text-sm">
-        © Copyright EcoEducate 2026. Ide by Adi Senpai
+        © Copyright EcoEducate 2026. Create by adi, thoriq and egik.
       </p>
     </footer>
   );

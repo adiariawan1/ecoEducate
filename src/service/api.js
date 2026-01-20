@@ -38,32 +38,42 @@ export const api = {
     return data;
   },
   // fetchCampagins
-  getCampaigns: async (page = 1, limit = 9) => {
-    try {
-      const from = (page -1) * limit;
-      const to = from + limit - 1;
+getCampaigns: async (page = 1, limit = 9, searchQuery = "") => { // Tambahkan parameter searchQuery
+  try {
+    const from = (page - 1) * limit;
+    const to = from + limit - 1;
 
-      const { data, count, error } = await supabase
+    let query = supabase
       .from('campaign_stats') 
-      .select('*', { count: 'exact' })
+      .select('*', { count: 'exact' });
+
+    
+    if (searchQuery) {
+      
+      query = query.or(`title.ilike.%${searchQuery}%,description.ilike.%${searchQuery}%`);
+    }
+
+    const { data, count, error } = await query
       .range(from, to)
       .order('created_at', { ascending: false });
-      if (error) throw error;
-      return {
-        data : data,
-        totalItems: count
-      }
-    } catch (err) {
-      console.error("Gagal ambil campaigns:", err);
-      return { data: [], totalItems: 0 };
-    }
-  },
+
+    if (error) throw error;
+    
+    return {
+      data: data,
+      totalItems: count
+    };
+  } catch (err) {
+    console.error("Gagal ambil campaigns:", err);
+    return { data: [], totalItems: 0 };
+  }
+},
   getCampaignById: async (id) => {
     const { data, error } = await supabase
       .from('campaign_stats')
       .select('*')
-      .eq('id', id)  // Cari berdasarkan ID
-      .single();     // Ambil satu data saja
+      .eq('id', id)  
+      .single();     
 
     if (error) throw error;
     return data;
