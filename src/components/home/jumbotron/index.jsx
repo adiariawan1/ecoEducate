@@ -153,9 +153,6 @@ const Jumbotron = () => {
             </div>
         </div>
     </section>
-        
-
-    // </SectionLayout>
   )
 }
 

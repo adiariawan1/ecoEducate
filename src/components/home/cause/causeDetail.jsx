@@ -27,7 +27,7 @@ export default function CampaignDetail() {
       try {
         setLoading(true);
         const [campData, urgentData] = await Promise.all([
-          // PERBAIKAN 1: Gunakan getCampaignById, bukan getCampaigns
+          
           api.getCampaignById(id), 
           api.getUrgentCampaigns()
         ]);
