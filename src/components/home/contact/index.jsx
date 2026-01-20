@@ -1,17 +1,48 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import SectionLayout from "../../layouts/sectionLayouts/index";
-import { Phone, Mail, Clock, MapPin,} from "lucide-react";
-import Footer from "../../home/Footer/index";
+import { Phone, Mail, Clock, MapPin } from "lucide-react";
 import { faqs } from "../../../data/faq";
 import EachUtils from "../../../utils/EachUtils";
 
 
+import emailjs from '@emailjs/browser';
 
 const Contact = () => {
   const [openIndex, setOpenIndex] = useState(null);
+  
+  
+  const form = useRef();
+  
+  // State untuk loading dan status pengiriman
+  const [isSending, setIsSending] = useState(false);
+
   const toggleFAQ = (index) => {
     setOpenIndex(openIndex === index ? null : index);
-  };//dipakai untuk mengatur FAQ (accordion) supaya bisa dibuka/tutup satu per satu.
+  };
+
+  
+  const sendEmail = (e) => {
+    e.preventDefault();
+    setIsSending(true); 
+
+    
+    const SERVICE_ID = 'service_htlekjt';   
+    const TEMPLATE_ID = 'template_9bztsbh'; 
+    const PUBLIC_KEY = '1TeQ-E1k8nJZ_KwNI';     
+
+    emailjs.sendForm(SERVICE_ID, TEMPLATE_ID, form.current, PUBLIC_KEY)
+      .then((result) => {
+          console.log(result.text);
+          alert("Pesan berhasil terkirim! Kami akan segera menghubungi Anda.");
+          e.target.reset(); 
+      }, (error) => {
+          console.log(error.text);
+          alert("Gagal mengirim pesan. Silakan coba lagi.");
+      })
+      .finally(() => {
+        setIsSending(false); 
+      });
+  };
 
   return (
     <SectionLayout className="mt-30 bg-white p-2">
@@ -24,9 +55,7 @@ const Contact = () => {
           Selamat Datang di Halaman Kontak Kami!
         </h1>
         <p className="text-gray-500 text-lg leading-relaxed">
-          Kami siap mendengar dari Anda. Jika Anda memiliki bantuan,
-          pertanyaan, atau ingin bekerja sama dengan kami, jangan ragu untuk
-          menghubungi melalui formulir di bawah ini.
+          Kami siap mendengar dari Anda. Hubungi kami langsung melalui formulir di bawah ini.
         </p>
       </div>
 
@@ -52,11 +81,11 @@ const Contact = () => {
                 </div>
                 <div className="flex gap-3 items-center">
                   <Phone className="text-orange-500" />
-                  <span>+61 815-2964-0581</span>
+                  <span>+62 815-2964-0581</span>
                 </div>
                 <div className="flex gap-3 items-center">
                   <Mail className="text-orange-500" />
-                  <span>kadeegiditamahaputra@email.net</span>
+                  <span>admin@ecoeducate.com</span>
                 </div>
                 <div className="flex gap-3 items-center">
                   <Clock className="text-orange-500" />
@@ -68,118 +97,73 @@ const Contact = () => {
 
           {/* RIGHT FORM */}
           <div className="lg:col-span-2 bg-gray-50 p-10">
-            <form className="space-y-6">
+            
+            
+            <form ref={form} onSubmit={sendEmail} className="space-y-6">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
-                  <label className="block text-sm font-medium mb-2">
-                    Nama Pertama
-                  </label>
-                  <input
-                    type="text"
-                    placeholder="Nama Pertama"
-                    className="w-full p-3 rounded-lg bg-white border outline-none focus:ring-2 focus:ring-orange-500"
-                  />
+                  <label className="block text-sm font-medium mb-2">Nama Pertama</label>
+                  
+                  <input type="text" name="firstName" placeholder="Nama Pertama" className="w-full p-3 rounded-lg bg-white border outline-none focus:ring-2 focus:ring-orange-500" required />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium mb-2">
-                    Nama Belakang
-                  </label>
-                  <input
-                    type="text"
-                    placeholder="Nama Belakang"
-                    className="w-full p-3 rounded-lg bg-white border outline-none focus:ring-2 focus:ring-orange-500"
-                  />
+                  <label className="block text-sm font-medium mb-2">Nama Belakang</label>
+                  <input type="text" name="lastName" placeholder="Nama Belakang" className="w-full p-3 rounded-lg bg-white border outline-none focus:ring-2 focus:ring-orange-500" required />
                 </div>
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
-                  <label className="block text-sm font-medium mb-2">
-                    Email Anda
-                  </label>
-                  <input
-                    type="email"
-                    placeholder="Email Anda"
-                    className="w-full p-3 rounded-lg bg-white border outline-none focus:ring-2 focus:ring-orange-500"
-                  />
+                  <label className="block text-sm font-medium mb-2">Email Anda</label>
+                  <input type="email" name="email" placeholder="Email Anda" className="w-full p-3 rounded-lg bg-white border outline-none focus:ring-2 focus:ring-orange-500" required />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium mb-2">
-                    Nomor
-                  </label>
-                  <input
-                    type="text"
-                    placeholder="Nomor"
-                    className="w-full p-3 rounded-lg bg-white border outline-none focus:ring-2 focus:ring-orange-500"
-                  />
+                  <label className="block text-sm font-medium mb-2">Nomor HP</label>
+                  <input type="text" name="phone" placeholder="Nomor HP" className="w-full p-3 rounded-lg bg-white border outline-none focus:ring-2 focus:ring-orange-500" />
                 </div>
               </div>
 
               <div>
-                <label className="block text-sm font-medium mb-2">
-                  Subject
-                </label>
-                <input
-                  type="text"
-                  placeholder="Subject"
-                  className="w-full p-3 rounded-lg bg-white border outline-none focus:ring-2 focus:ring-orange-500"
-                />
+                <label className="block text-sm font-medium mb-2">Subject</label>
+                <input type="text" name="subject" placeholder="Subject" className="w-full p-3 rounded-lg bg-white border outline-none focus:ring-2 focus:ring-orange-500" required />
               </div>
 
               <div>
-                <label className="block text-sm font-medium mb-2">
-                  Pesan
-                </label>
-                <textarea
-                  rows="5"
-                  placeholder="Pesan"
-                  className="w-full p-3 rounded-lg bg-white border outline-none focus:ring-2 focus:ring-orange-500"
-                />
+                <label className="block text-sm font-medium mb-2">Pesan</label>
+                <textarea rows="5" name="message" placeholder="Pesan" className="w-full p-3 rounded-lg bg-white border outline-none focus:ring-2 focus:ring-orange-500" required />
               </div>
 
               <button
                 type="submit"
-                className="bg-orange-500 text-white px-10 py-4 rounded-full font-semibold hover:bg-orange-600 transition"
+                disabled={isSending} // Matikan tombol saat mengirim
+                className={`px-10 py-4 rounded-full font-semibold transition text-white ${isSending ? 'bg-gray-400 cursor-not-allowed' : 'bg-orange-500 hover:bg-orange-600'}`}
               >
-                KIRIM
+                {isSending ? "MENGIRIM..." : "KIRIM PESAN"}
               </button>
             </form>
           </div>
         </div>
       </div>
 
-      {/* VISUAL SECTION */}
+      {/* VISUAL & FAQ SECTION (Tetap sama) */}
       <div className="max-w-6xl mx-auto py-46 text-center">
        <img
         src="https://i.pinimg.com/736x/ac/f0/c2/acf0c2ef86ac6ae520b2de9a0613f328.jpg"
         className="rounded-xl w-[1000px] h-[350px] object-cover mx-auto"
+        alt="Visual"
        />
       </div>
 
-      {/* FAQ SECTION */}
       <div className="max-w-6xl mx-auto mb-45 ">
         <h2 className="text-4xl font-bold text-center text-slate-900 mb-6">
           Pertanyaan yang Sering Diajukan
         </h2>
-        <p className="text-gray-500 text-center text-lg mb-10">
-          Temukan jawaban atas pertanyaan umum seputar donasi dan organisasi amal.
-        </p>
         <div className="space-y-4">
           <EachUtils of={faqs} render={(item,index) => (
-            <div
-              key={index}
-              className="border rounded-xl p-5 hover:shadow-md transition duration-300"
-            >
-              <button
-                onClick={() => toggleFAQ(index)}
-                className="w-full text-left flex justify-between items-center"
-              >
-                <span className="text-lg font-semibold text-slate-800">
-                  {item.question}
-                </span>
-                <span className="text-orange-500 text-xl">
-                  {openIndex === index ? "−" : "+"}
-                </span>
+            <div key={index} className="border rounded-xl p-5 hover:shadow-md transition duration-300">
+              <button onClick={() => toggleFAQ(index)} className="w-full text-left flex justify-between items-center">
+                <span className="text-lg font-semibold text-slate-800">{item.question}</span>
+                <span className="text-orange-500 text-xl">{openIndex === index ? "−" : "+"}</span>
               </button>
               {openIndex === index && (
                 <p className="mt-4 text-gray-600 leading-relaxed">{item.answer}</p>

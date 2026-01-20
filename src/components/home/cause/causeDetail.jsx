@@ -97,7 +97,7 @@ export default function CampaignDetail() {
   if (loading) return <div className="h-screen flex items-center justify-center"><Loader2 className="animate-spin text-orange-500" size={48} /></div>;
   if (!campaign) return <div className="text-center py-20">Kampanye tidak ditemukan.</div>;
 
-  // PERBAIKAN 2: Pastikan variabel 'campaign' (singular) yang dipakai di bawah ini
+  
   const percentage = Math.min(((campaign.raised_amount || 0) / campaign.target_amount) * 100, 100);
 
   return (
@@ -109,14 +109,14 @@ export default function CampaignDetail() {
           <Link to="/" className="hover:text-orange-500">Home</Link> &gt; <span className="text-orange-500">Causes</span>
         </div>
 
-        {/* PERBAIKAN 3: Ganti 'campaigns' jadi 'campaign' */}
+        
         <h1 className="text-4xl md:text-5xl font-bold mb-8 text-slate-900">{campaign.title}</h1>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
           
           <div className="lg:col-span-2 space-y-10">
             <div className="rounded-3xl overflow-hidden shadow-lg h-[400px] md:h-[500px] relative group">
-              {/* PERBAIKAN 4: Ganti 'campaigns' jadi 'campaign' */}
+              
               <img 
                 src={campaign.image_url || "https://via.placeholder.com/800x500"} 
                 alt={campaign.title} 

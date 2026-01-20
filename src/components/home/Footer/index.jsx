@@ -21,7 +21,7 @@ const Footer = () => {
       <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-16">
 
         <div>
-          <h3 className="text-white text-2xl font-bold mb-4">EcoEducate</h3>
+          <img src="eco-logo-white.png" alt="EcoEducate" width={155} height={140}  className="pb-8"/>
           <p className="text-gray-400 mb-6">
             ayo lindungi bumi ini dan sesama demi keberlanjutan.
           </p>
