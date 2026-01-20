@@ -1,13 +1,32 @@
 import React from "react";
+import { useEffect, useState } from "react";
 import EachUtils from "../../../utils/EachUtils";
-import Logo from "../../../assets/eco-logo-white.png";
+import { api } from "../../../service/api";
 
 const Footer = () => {
+  const [galery, setGalery] = useState([]);
+  useEffect(() => {
+    const factGalery = async () => {
+      try {
+        const data = await api.getGallery();
+        setGalery(data.slice(0, 6));
+      } catch (error) {
+        console.error("Gagal ambil data!", error);
+      }
+    };
+    factGalery();
+  }, []);
   return (
     <footer className="bg-black text-gray-300 pt-25 pb-10">
       <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-16">
         <div>
-          <img src={Logo} alt="eco-logo" className="w-50 h-auto mb-4" />
+          <img
+            src="eco-logo-white.png"
+            alt="EcoEducate"
+            width={155}
+            height={140}
+            className="pb-8"
+          />
           <p className="text-gray-400 mb-6">
             ayo lindungi bumi ini dan sesama demi keberlanjutan.
           </p>
@@ -43,11 +62,24 @@ const Footer = () => {
         </div>
 
         <div>
-          <h4 className="text-white font-semibold mb-4">Penyebab</h4>
+          <h4 className="text-white font-semibold mb-4">Galery</h4>
           <div className="grid grid-cols-3 gap-3">
-            {[1, 2, 3, 4, 5, 6].map((i) => (
-              <div key={i} className="h-20 bg-gray-700 rounded-lg" />
-            ))}
+            <EachUtils
+              of={galery}
+              render={(item, index) => (
+                <div
+                  key={index}
+                  className="overflow-hidden shadow-sm hover:shadow-xl transition duration-300 border border-gray-100 flex flex-col h-full">
+                  <div className="h-18 overflow-hidden relative">
+                    <img
+                      src={item.image_url}
+                      alt={item.title}
+                      className="w-full h-full object-cover hover:scale-110 transition duration-500"
+                    />
+                  </div>
+                </div>
+              )}
+            />
           </div>
         </div>
       </div>

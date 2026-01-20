@@ -3,18 +3,35 @@ import { Link } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import EachUtils from "../../../utils/EachUtils";
 import { links } from "../../../data/navbar";
+<<<<<<< HEAD
 import Logo from "../../../assets/eco-logo-white.png";
+=======
+>>>>>>> main
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
+<<<<<<< HEAD
     <nav className="absolute top-0 left-0 right-0 w-full z-50 py-6 fixed top-0 left-0 w-full z-50 bg-black/70 backdrop-blur-md border-b border-white/10 shadow-lg">
       <div className="container mx-auto px-6 flex justify-between items-center">
         {/* logo */}
         <Link to={"/"} className="flex items-center gap-2 ">
           <div className="font-bold tracking-winder cursor-pointer text-white text-2xl">
             <img src={Logo} alt="eco-logo" className="w-50" />
+=======
+    <nav className="absolute top-0 left-0 right-0 w-full z-50 py-6 fixed top-0 left-0 w-full z-50 bg-black/70 backdrop-blur-sm">
+      <div className="container mx-auto px-6 flex justify-between items-center">
+        {/* Logo */}
+        <Link to={"/"} className="flex items-center gap-2 ">
+          <div className="font-bold tracking-winder cursor-pointer text-white text-2xl">
+            <img
+              src="eco-logo-white.png"
+              alt="EcoEducate"
+              width={155}
+              height={140}
+            />
+>>>>>>> main
           </div>
         </Link>
         {/* navlinks */}
@@ -25,7 +42,11 @@ const Navbar = () => {
               <Link
                 key={index}
                 to={item.path}
+<<<<<<< HEAD
                 className="text-xs font-bold text-gray-300 hover:text-white transition tracking-widest">
+=======
+                className="text-xs font-bold text-gray-300 hover:text-orange-500 transform hover:scale-120 transition duration-400 tracking-widest">
+>>>>>>> main
                 {item.name}
               </Link>
             )}
@@ -74,12 +95,15 @@ const Navbar = () => {
             <button className="w-full bg-orange-500 text-white py-4 rounded-full font-bold tracking-widest">
               DONATE NOW
             </button>
+<<<<<<< HEAD
           </Link>
           =======
           <Link to="/Kampanye" onClick={() => setIsOpen(false)}>
             <button className="w-full bg-orange-500 text-white py-4 rounded-full font-bold tracking-widest">
               DONATE NOW
             </button>
+=======
+>>>>>>> main
           </Link>
         </div>
       )}
