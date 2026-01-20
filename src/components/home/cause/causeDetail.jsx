@@ -119,7 +119,7 @@ export default function CampaignDetail() {
       
       <div className="container mx-auto py-12">
         <div className="text-sm text-gray-500 mb-4">
-          <Link to="/" className="hover:text-orange-500">Home</Link> &gt; <span className="text-orange-500">Causes</span>
+          <Link to="/" className="hover:text-orange-500">Beranda</Link> &gt; <span className="text-orange-500">Kampanye</span>
         </div>
 
         <h1 className="text-4xl md:text-5xl font-bold mb-8 text-slate-900">{campaign.title}</h1>
@@ -164,7 +164,7 @@ export default function CampaignDetail() {
 
             {/* FORM DONASI */}
             <div>
-              <h3 className="text-2xl font-bold mb-6">Donation Amount</h3>
+              <h3 className="text-2xl font-bold mb-6">Nominal</h3>
               <div className="flex flex-wrap gap-3 mb-6">
                 {[10, 25, 50, 100, 500].map((val) => (
                   <button
@@ -196,7 +196,7 @@ export default function CampaignDetail() {
                  <span className="text-4xl font-bold text-slate-900">{amount || 0}</span>
               </div>
 
-              <h3 className="text-2xl font-bold mb-6">Select Payment Method</h3>
+              <h3 className="text-2xl font-bold mb-6">Pilih Metode Pembayaran</h3>
               <div className="flex gap-6 mb-8">
                  <label className="flex items-center gap-3 cursor-pointer group">
                     <div className={`w-5 h-5 rounded-full border-2 flex items-center justify-center ${paymentMethod === 'credit_card' ? 'border-orange-500' : 'border-gray-300'}`}>
@@ -214,39 +214,39 @@ export default function CampaignDetail() {
                  </label>
               </div>
 
-              <h3 className="text-2xl font-bold mb-6">Personal Information</h3>
+              <h3 className="text-2xl font-bold mb-6">Informasi Pribadi</h3>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
                  <div>
-                    <label className="block text-sm font-bold text-slate-700 mb-2">First Name</label>
+                    <label className="block text-sm font-bold text-slate-700 mb-2">Nama Depan</label>
                     <input 
                         type="text" 
                         name="firstName" 
                         value={donorInfo.firstName} 
                         onChange={handleInputChange} 
-                        placeholder="First Name" 
+                        placeholder="Nama Depan" 
                         className="w-full px-5 py-3 bg-gray-50 border-none rounded-xl focus:ring-2 focus:ring-orange-500 outline-none transition" 
                     />
                  </div>
                  <div>
-                    <label className="block text-sm font-bold text-slate-700 mb-2">Last Name</label>
+                    <label className="block text-sm font-bold text-slate-700 mb-2">Nama Belakang</label>
                     <input 
                         type="text" 
                         name="lastName" 
                         value={donorInfo.lastName}
                         onChange={handleInputChange}
-                        placeholder="Last Name" 
+                        placeholder="Nama Belakang" 
                         className="w-full px-5 py-3 bg-gray-50 border-none rounded-xl focus:ring-2 focus:ring-orange-500 outline-none transition" 
                     />
                  </div>
               </div>
               <div className="mb-8">
-                 <label className="block text-sm font-bold text-slate-700 mb-2">Email Address</label>
+                 <label className="block text-sm font-bold text-slate-700 mb-2">Alamat Email</label>
                  <input 
                     type="email" 
                     name="email"
                     value={donorInfo.email}
                     onChange={handleInputChange}
-                    placeholder="Email Address" 
+                    placeholder="Alamat Email" 
                     className="w-full px-5 py-3 bg-gray-50 border-none rounded-xl focus:ring-2 focus:ring-orange-500 outline-none transition" 
                  />
               </div>
@@ -260,7 +260,7 @@ export default function CampaignDetail() {
                     disabled={isProcessing} 
                     className="w-full md:w-auto bg-orange-500 hover:bg-orange-600 disabled:bg-orange-300 text-white font-bold py-4 px-10 rounded-full transition shadow-lg hover:shadow-orange-200 transform hover:-translate-y-1 flex items-center justify-center gap-2"
                  >
-                    {isProcessing ? <><Loader2 className="animate-spin" /> Processing...</> : "DONATE NOW"}
+                    {isProcessing ? <><Loader2 className="animate-spin" /> Processing...</> : "DONATE Sekarang"}
                  </button>
               </div>
 
@@ -290,7 +290,7 @@ export default function CampaignDetail() {
 
             {/* URGENT CAUSES LIST */}
             <div>
-               <h4 className="text-xl font-bold mb-6 text-slate-900">Urgent Causes</h4>
+               <h4 className="text-xl font-bold mb-6 text-slate-900">Kampanye Terbaru</h4>
                <div className="space-y-6">
                   {urgentCauses.length > 0 ? urgentCauses.map((item) => (
                     <Link to={`/Kampanye/${item.id}`} key={item.id} className="flex gap-4 group">
@@ -302,12 +302,12 @@ export default function CampaignDetail() {
                              {item.title}
                           </h5>
                           <span className="text-xs font-bold text-orange-500 uppercase tracking-wider">
-                            View Details
+                            Lihat Detail
                           </span>
                        </div>
                     </Link>
                   )) : (
-                    <p className="text-gray-400 text-sm">No urgent causes.</p>
+                    <p className="text-gray-400 text-sm">Tidak ada kampanye terbaru.</p>
                   )}
                </div>
             </div>
@@ -327,11 +327,11 @@ export default function CampaignDetail() {
                  <CheckCircle className="text-green-500 w-10 h-10" />
               </div>
               
-              <h2 className="text-2xl font-bold text-slate-900 mb-2">Thank You!</h2>
-              <p className="text-gray-500 mb-6">Your donation has been successfully processed.</p>
+              <h2 className="text-2xl font-bold text-slate-900 mb-2">Terima Kasih!</h2>
+              <p className="text-gray-500 mb-6">Donasi Anda telah berhasil diproses.</p>
               
               <button onClick={() => setShowSuccessModal(false)} className="w-full bg-slate-900 text-white font-bold py-3 rounded-xl hover:bg-slate-800 transition">
-                 Done
+                 Selesai
               </button>
            </div>
         </div>

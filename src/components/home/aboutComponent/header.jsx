@@ -2,12 +2,12 @@ import React from "react";
 
 const Header = () => {
   return (
-    <section className="bg-white mt-30">
+    <section >
       <div className="flex justify-center">
         <div className="text-center mb-30">
-          <h2 className="text-slate-500 pt-8">
+          <p className="text-gray-500 text-sm font-medium mb-4 uppercase tracking-wide">
             BERANDA <span className="text-black">/ TENTANG KAMI</span>
-          </h2>
+          </p>
           <h1 className=" font-bold text-4xl pt-8">
             Bersatu Untuk Menjadi Lebih Baik
           </h1>
