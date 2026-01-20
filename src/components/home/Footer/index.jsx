@@ -1,13 +1,13 @@
 import React from "react";
 import EachUtils from "../../../utils/EachUtils";
+import Logo from "../../../assets/eco-logo-white.png";
 
 const Footer = () => {
   return (
     <footer className="bg-black text-gray-300 pt-25 pb-10">
       <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-16">
-
         <div>
-          <h3 className="text-white text-2xl font-bold mb-4">EcoEducate</h3>
+          <img src={Logo} alt="eco-logo" className="w-50 h-auto mb-4" />
           <p className="text-gray-400 mb-6">
             ayo lindungi bumi ini dan sesama demi keberlanjutan.
           </p>
@@ -15,10 +15,11 @@ const Footer = () => {
             <span className="text-white">No. WA :</span> (+62) 815-2964-0581
           </p>
           <p className="text-sm">
-            <span className="text-white">Address:</span> JL.Raya Puputan,Dangin Puri Kelod, Denpasar,Bali
+            <span className="text-white">Address:</span> JL.Raya Puputan,Dangin
+            Puri Kelod, Denpasar,Bali
           </p>
         </div>
-        
+
         <div>
           <h4 className="text-white font-semibold mb-4">Tentang Kami</h4>
           <ul className="space-y-2">
@@ -29,7 +30,6 @@ const Footer = () => {
             <li>Contact Us</li>
           </ul>
         </div>
-  
 
         <div>
           <h4 className="text-white font-semibold mb-4">Tautan Berguna</h4>
@@ -50,7 +50,6 @@ const Footer = () => {
             ))}
           </div>
         </div>
-
       </div>
 
       <p className="text-center text-gray-500 mt-16 text-sm">
