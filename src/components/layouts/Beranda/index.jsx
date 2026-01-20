@@ -6,7 +6,7 @@ import LatestCausehome from "../../home/cause/latestCausehome";
 import OurGalery from "../../home/Galery";
 import NewsSection from "../../home/newsSection";
 import PartnersSection from "../../home/PartnerIcon";
-import AboutHome from "../../home/About";
+import AboutHome from "../../home/About/about-home";
 
 const Beranda = () => {
   return (

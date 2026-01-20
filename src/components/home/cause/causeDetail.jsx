@@ -1,14 +1,19 @@
 import React, { useState, useEffect } from "react";
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link, useNavigate } from "react-router-dom";
 import { Search, Loader2, CheckCircle, X } from "lucide-react";
 import { api } from "../../../service/api"; 
 import SectionLayout from "../../layouts/sectionLayouts";
 
 export default function CampaignDetail() {
   const { id } = useParams();
+  const navigate = useNavigate();
+  
   const [campaign, setCampaign] = useState(null);
   const [urgentCauses, setUrgentCauses] = useState([]);
   const [loading, setLoading] = useState(true);
+
+  // --- STATE SEARCH ---
+  const [searchTerm, setSearchTerm] = useState(""); 
 
   // --- STATE FORM DONASI ---
   const [amount, setAmount] = useState(10); 
@@ -21,18 +26,27 @@ export default function CampaignDetail() {
   const [isProcessing, setIsProcessing] = useState(false);
   const [showSuccessModal, setShowSuccessModal] = useState(false);
 
+  // --- HANDLE SEARCH ---
+  const handleSearch = (e) => {
+    // Jalankan jika tekan Enter ATAU klik icon search
+    if (e.key === 'Enter' || e.type === 'click') {
+      if (searchTerm.trim()) {
+        // Arahkan ke halaman list dengan query
+        navigate(`/Kampanye?q=${encodeURIComponent(searchTerm)}`); 
+      }
+    }
+  };
+
   // --- FETCH DATA ---
   useEffect(() => {
     const loadData = async () => {
       try {
         setLoading(true);
         const [campData, urgentData] = await Promise.all([
-          
           api.getCampaignById(id), 
           api.getUrgentCampaigns()
         ]);
         
-        console.log("Data Detail:", campData); // Cek di console apakah data masuk?
         setCampaign(campData);
         setUrgentCauses(urgentData);
       } catch (err) {
@@ -97,26 +111,24 @@ export default function CampaignDetail() {
   if (loading) return <div className="h-screen flex items-center justify-center"><Loader2 className="animate-spin text-orange-500" size={48} /></div>;
   if (!campaign) return <div className="text-center py-20">Kampanye tidak ditemukan.</div>;
 
-  
   const percentage = Math.min(((campaign.raised_amount || 0) / campaign.target_amount) * 100, 100);
 
   return (
-    <SectionLayout className="">
-        <div className="bg-white min-h-screen font-sans text-slate-800 relative mt-30 px-20">
+    <SectionLayout>
+      <div className="bg-white min-h-screen font-sans text-slate-800 relative mt-30 px-4 md:px-20">
       
-      <div className="container mx-auto px-4 py-12">
+      <div className="container mx-auto py-12">
         <div className="text-sm text-gray-500 mb-4">
           <Link to="/" className="hover:text-orange-500">Home</Link> &gt; <span className="text-orange-500">Causes</span>
         </div>
 
-        
         <h1 className="text-4xl md:text-5xl font-bold mb-8 text-slate-900">{campaign.title}</h1>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
           
+          {/* KOLOM KIRI (Detail & Form) */}
           <div className="lg:col-span-2 space-y-10">
             <div className="rounded-3xl overflow-hidden shadow-lg h-[400px] md:h-[500px] relative group">
-              
               <img 
                 src={campaign.image_url || "https://via.placeholder.com/800x500"} 
                 alt={campaign.title} 
@@ -124,19 +136,18 @@ export default function CampaignDetail() {
               />
             </div>
 
-            <div className="bg-orange-50/50 p-1 rounded-xl">
+            {/* Progress Bar Section */}
+            <div className="bg-orange-50/50 p-6 rounded-xl border border-orange-100">
                <div className="w-full bg-gray-200 rounded-full h-4 overflow-hidden mb-4">
                   <div className="bg-orange-500 h-4 rounded-full transition-all duration-1000" style={{ width: `${percentage}%` }}></div>
                </div>
                <div className="flex justify-between items-end px-2">
                  <div>
                     <span className="block text-gray-500 text-sm font-semibold uppercase tracking-wider">Raised</span>
-                    {/* PERBAIKAN 5: Ganti 'campaigns' jadi 'campaign' */}
                     <span className="text-3xl font-bold text-orange-500">{formatMoney(campaign.raised_amount || 0)}</span>
                  </div>
                  <div className="text-right">
                     <span className="block text-gray-500 text-sm font-semibold uppercase tracking-wider">Goal</span>
-                    {/* PERBAIKAN 6: Ganti 'campaigns' jadi 'campaign' */}
                     <span className="text-xl font-bold text-slate-700">{formatMoney(campaign.target_amount)}</span>
                  </div>
                </div>
@@ -146,13 +157,12 @@ export default function CampaignDetail() {
             </div>
 
             <div className="prose prose-lg max-w-none text-gray-600 leading-relaxed">
-              {/* PERBAIKAN 7: Ganti 'campaigns' jadi 'campaign' */}
               <p>{campaign.description}</p>
             </div>
             
             <hr className="border-gray-200" />
 
-            {/* FORM DONASI (Sudah Benar) */}
+            {/* FORM DONASI */}
             <div>
               <h3 className="text-2xl font-bold mb-6">Donation Amount</h3>
               <div className="flex flex-wrap gap-3 mb-6">
@@ -257,20 +267,33 @@ export default function CampaignDetail() {
             </div>
           </div>
 
-          {/* SIDEBAR SAMA SEPERTI SEBELUMNYA */}
+          {/* SIDEBAR (SEARCH & URGENT) */}
           <div className="space-y-10">
+            {/* SEARCH BOX */}
             <div className="bg-white p-1">
-               <div className="relative">
-                 <input type="text" placeholder="Search..." className="w-full pl-12 pr-4 py-3 border border-gray-200 rounded-full focus:border-orange-500 focus:ring-1 focus:ring-orange-500 outline-none transition" />
-                 <Search className="absolute left-4 top-3.5 text-gray-400" size={20} />
-               </div>
+                <div className="relative">
+                    <input 
+                      type="text" 
+                      placeholder="Cari kampanye..." 
+                      value={searchTerm} 
+                      onChange={(e) => setSearchTerm(e.target.value)} 
+                      onKeyDown={handleSearch} 
+                      className="w-full pl-12 pr-4 py-3 border border-gray-200 rounded-full focus:border-orange-500 focus:ring-1 focus:ring-orange-500 outline-none transition" 
+                    />
+                    <Search 
+                      className="absolute left-4 top-3.5 text-gray-400 cursor-pointer hover:text-orange-500" 
+                      size={20} 
+                      onClick={handleSearch} 
+                    />
+                </div>
             </div>
 
+            {/* URGENT CAUSES LIST */}
             <div>
                <h4 className="text-xl font-bold mb-6 text-slate-900">Urgent Causes</h4>
                <div className="space-y-6">
                   {urgentCauses.length > 0 ? urgentCauses.map((item) => (
-                    <Link to={`/campaign/${item.id}`} key={item.id} className="flex gap-4 group">
+                    <Link to={`/Kampanye/${item.id}`} key={item.id} className="flex gap-4 group">
                        <div className="w-24 h-24 flex-shrink-0 rounded-xl overflow-hidden bg-gray-200">
                           <img src={item.image_url} alt={item.title} className="w-full h-full object-cover group-hover:scale-110 transition duration-500" />
                        </div>
@@ -278,10 +301,9 @@ export default function CampaignDetail() {
                           <h5 className="font-bold text-slate-800 leading-tight mb-2 group-hover:text-orange-500 transition line-clamp-2">
                              {item.title}
                           </h5>
-                          <Link to={`/Kampanye/${item.id}`}>
-                            <span className="text-xs font-bold text-orange-500 uppercase tracking-wider">View Details</span>
-                          </Link>
-
+                          <span className="text-xs font-bold text-orange-500 uppercase tracking-wider">
+                            View Details
+                          </span>
                        </div>
                     </Link>
                   )) : (
