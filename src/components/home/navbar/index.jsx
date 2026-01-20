@@ -13,7 +13,7 @@ const Navbar = () => {
         {/* Logo */}
         <Link to={'/'} className='flex items-center gap-2 '>
         <div className='font-bold tracking-winder cursor-pointer text-white text-2xl'>
-          <h1>ecoEducate</h1>
+          <img src="eco-logo-white.png" alt="EcoEducate" width={155} height={140} />
         </div>
         </Link>
         {/* navlinks */}

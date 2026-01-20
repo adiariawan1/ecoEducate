@@ -7,11 +7,13 @@ import LatestCausehome from '../../home/cause/latestCausehome'
 import OurGalery from '../../home/Galery'
 import NewsSection from '../../home/newsSection'
 import PartnersSection from '../../home/PartnerIcon'
+import About from '../../home/About'
 
 const Beranda = () => {
   return (
     <SectionLayout className='mt-30'>
         <Jumbotron/>
+        <About/>
         <LatestCausehome />
         <ProjectsMap/>
         <OurGalery/>
