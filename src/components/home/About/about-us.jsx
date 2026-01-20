@@ -9,7 +9,7 @@ import PartnersSection from "../PartnerIcon";
 
 const AboutUs = () => {
   return (
-    <SectionLayout>
+    <SectionLayout className="pt-12 pb-24 bg-white mt-30">
       <Header />
       <BodyAbout />
       <InfoOrganization />
