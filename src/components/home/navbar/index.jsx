@@ -75,13 +75,13 @@ const Navbar = () => {
               key={link.name}
               to={link.path}
               onClick={() => setIsOpen(false)}
-              className="text-white font-bold text-lg tracking-widest hover:text-emerald-400">
+              className="text-white font-bold text-lg tracking-widest hover:text-orange-500">
               {link.name}
             </Link>
           ))}
           <Link to="/Kampanye" onClick={() => setIsOpen(false)}>
             <button className="w-full bg-orange-500 text-white py-4 rounded-full font-bold tracking-widest">
-              DONATE NOW
+              DONATE 
             </button>
           </Link>
         </div>
