@@ -14,16 +14,15 @@ const LatestCauses = () => {
   const [totalPages, setTotalPages] = useState(0);
   const itemsPerPage = 9; 
 
-  // State search query from URL
+  // State search query 
   const [searchParams] = useSearchParams();
   const query = searchParams.get("q") || "";
 
-  // 1. EFFECT PERTAMA: Reset halaman ke 1 jika kata kunci pencarian berubah
+
   useEffect(() => {
     setCurrentPage(1);
   }, [query]);
 
-  // 2. EFFECT KEDUA: Ambil data dari API
   useEffect(() => {
     const fetchData = async () => {
       setLoading(true);
@@ -43,13 +42,11 @@ const LatestCauses = () => {
   }, [currentPage, query]);
 
   return (
-    // UBAH 1: Padding lebih proporsional (py-12 di mobile, py-24 di desktop)
     <section className='py-12 md:py-24 bg-gray-50'>
       
       {/* Container Header */}
       <div className="container mx-auto px-4 mb-10 md:mb-16">
         <div className="flex flex-col items-center justify-center text-center">
-          {/* UBAH 2: Font size responsif (text-3xl di mobile) */}
           <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-3">
             {query ? `Hasil Pencarian: "${query}"` : "Kampanye"}
           </h2>
@@ -69,7 +66,6 @@ const LatestCauses = () => {
         </div>
       ) : (
         <div className="container mx-auto px-4">
-            {/* UBAH 3: Grid gap disesuaikan (gap-6 di mobile) */}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
             
             {campaigns.length > 0 ? (

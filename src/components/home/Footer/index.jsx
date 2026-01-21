@@ -2,7 +2,7 @@ import React from "react";
 import { useEffect, useState } from "react";
 import EachUtils from "../../../utils/EachUtils";
 import { api } from "../../../service/api";
-import { Link } from "react-router-dom"; // Opsional: Jika menggunakan React Router
+import { Link } from "react-router-dom"; 
 
 const Footer = () => {
   const [galery, setGalery] = useState([]);
@@ -20,10 +20,9 @@ const Footer = () => {
   }, []);
 
   return (
-    // UBAH 1: Padding atas-bawah disesuaikan (py-12 untuk mobile, pt-24 untuk desktop)
     <footer className="bg-black text-gray-300 py-12 lg:pt-24 lg:pb-10">
       
-      {/* UBAH 2: Gap antar kolom dikecilkan di mobile (gap-8) */}
+
       <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-16">
         
         {/* KOLOM 1: Brand & Info */}
@@ -56,7 +55,6 @@ const Footer = () => {
             Tentang Kami
           </h4>
           <ul className="space-y-3 text-sm">
-            {/* Tambahkan hover effect agar interaktif */}
             <li className="hover:text-orange-500 transition-colors cursor-pointer">Tentang kami</li>
             <li className="hover:text-orange-500 transition-colors cursor-pointer">Kampanye</li>
             <li className="hover:text-orange-500 transition-colors cursor-pointer">Volunteers</li>

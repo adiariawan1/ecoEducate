@@ -17,7 +17,7 @@ const NewsSection = () => {
     fetchNews();
   }, []);
 
-  // Format Tanggal Indonesia (Contoh: 20 Januari 2026)
+
   const formatDate = (isoString) => {
     const date = new Date(isoString);
     return date.toLocaleDateString('id-ID', { 
@@ -65,7 +65,6 @@ const NewsSection = () => {
                     alt={item.title} 
                     className="w-full h-full object-cover group-hover:scale-110 transition duration-700 ease-in-out"
                   />
-                  {/* Badge Sumber Berita (Contoh: Kompas, Detik) */}
                   <div className="absolute top-4 left-4 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-xs font-bold text-slate-900 shadow-sm">
                     {item.source.name}
                   </div>
@@ -89,7 +88,6 @@ const NewsSection = () => {
                     {item.description}
                   </p>
 
-                  {/* Tombol Baca Selengkapnya */}
                   <a 
                     href={item.url} 
                     target="_blank" 
