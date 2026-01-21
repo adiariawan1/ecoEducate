@@ -9,14 +9,11 @@ const OurGalery = () => {
   const [galery, setGalery] = useState([])
 
 
-  //  const [currentPage, setCurrentPage] = useState(1);
-  //  const [totalPages, setTotalPages] = useState(0);
-  //  const itemsPerPage = 6; 
+
   useEffect(()=> {
     const factGalery=async() =>{
       try {
         const data = await api.getGallery()
-        // setTotalPages(Math.ceil(totalItems / itemsPerPage));
         setGalery(data.slice(0,6))
       } catch (error) {
         console.error("Gagal ambil data!", error)

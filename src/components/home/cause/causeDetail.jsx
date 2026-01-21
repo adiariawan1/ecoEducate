@@ -28,10 +28,8 @@ export default function CampaignDetail() {
 
   // --- HANDLE SEARCH ---
   const handleSearch = (e) => {
-    // Jalankan jika tekan Enter ATAU klik icon search
     if (e.key === 'Enter' || e.type === 'click') {
       if (searchTerm.trim()) {
-        // Arahkan ke halaman list dengan query
         navigate(`/Kampanye?q=${encodeURIComponent(searchTerm)}`); 
       }
     }
@@ -288,7 +286,7 @@ export default function CampaignDetail() {
                 </div>
             </div>
 
-            {/* URGENT CAUSES LIST */}
+            {/* KAMPAIGNE TERBARU */}
             <div>
                <h4 className="text-xl font-bold mb-6 text-slate-900">Kampanye Terbaru</h4>
                <div className="space-y-6">

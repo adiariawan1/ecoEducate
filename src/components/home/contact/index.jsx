@@ -13,7 +13,7 @@ const Contact = () => {
   
   const form = useRef();
   
-  // State untuk loading dan status pengiriman
+ 
   const [isSending, setIsSending] = useState(false);
 
   const toggleFAQ = (index) => {
@@ -135,7 +135,7 @@ const Contact = () => {
 
               <button
                 type="submit"
-                disabled={isSending} // Matikan tombol saat mengirim
+                disabled={isSending} 
                 className={`px-10 py-4 rounded-full font-semibold transition text-white ${isSending ? 'bg-gray-400 cursor-not-allowed' : 'bg-orange-500 hover:bg-orange-600'}`}
               >
                 {isSending ? "MENGIRIM..." : "KIRIM PESAN"}
@@ -145,7 +145,7 @@ const Contact = () => {
         </div>
       </div>
 
-      {/* VISUAL & FAQ SECTION (Tetap sama) */}
+
       <div className="max-w-6xl mx-auto py-46 text-center">
        <img
         src="https://i.pinimg.com/736x/ac/f0/c2/acf0c2ef86ac6ae520b2de9a0613f328.jpg"
